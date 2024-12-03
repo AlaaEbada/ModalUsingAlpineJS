@@ -14,7 +14,8 @@ class UsersList extends Component
 
     #[Url(as : 's' , history: true,)]
     public $search;
-    public User $selectedUser;
+
+    public ?User $selectedUser = null;
 
     #[Computed()]
     public function users()
@@ -32,9 +33,23 @@ class UsersList extends Component
 
     public function deleteUser(User $user)
     {
+        // Delete the user
         $user->delete();
+
+        // Clear the selected user if it's the same as the deleted user
+        if ($this->selectedUser && $this->selectedUser->id === $user->id) {
+            $this->selectedUser = null; // Use this if you allowed nullable type
+            // Or use: $this->selectedUser = new User(); if not nullable
+        }
+
+        // Reset pagination to handle changes
+        $this->resetPage();
+
+        // Dispatch event
         $this->dispatch('userDeleted');
     }
+
+
     public function render()
     {
         return view('livewire.users-list');
