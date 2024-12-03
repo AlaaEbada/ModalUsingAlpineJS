@@ -17,6 +17,7 @@ class="fixed z-50 inset-0 ">
 
 
     <div class="bg-white rounded-lg fixed inset-0 p-6 m-auto max-w-2xl text-black" style="max-height: 600px;">
+    <div class="bg-white rounded-lg fixed inset-0 p-6 m-auto max-w-2xl text-black" style="max-height: 500px;">
         @if(isset($title))
             <div class="py-3 flex item-center justify-center" >
                 {{ $title }}
@@ -34,5 +35,7 @@ class="fixed z-50 inset-0 ">
         <button x-on:click="show = false" class="px-3 py-1 bg-red-500 text-white rounded"> Close Modal</button>
 
 
+    </div>
+</div>
     </div>
 </div>

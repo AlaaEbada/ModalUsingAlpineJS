@@ -49,5 +49,30 @@
 
         @livewireScripts
 
+        <script src="//unpkg.com/alpinejs" defer></script>
+
+
+
+    </head>
+    <body class="p-10">
+        <x-modal title="Modal 1" name="Modal1">
+            @slot('body')
+                <H1 class="text-pink-500 font-bold">This Is Body</H1>
+            @endslot
+        </x-modal>
+
+
+        <x-modal title="Modal 2" name="Modal2">
+            @slot('body')
+                <H1 class="text-pink-500 font-bold">This Is Body</H1>
+            @endslot
+        </x-modal>
+
+        <button x-data x-on:click="$dispatch('open-modal', {name: 'Modal1'})"
+        class="px-3 py-1 bg-teal-500 text-white rounded"> Open Modal 1</button>
+
+        <button x-data x-on:click="$dispatch('open-modal', {name: 'Modal2'})"
+        class="px-3 py-1 bg-teal-500 text-white rounded"> Open Modal 2</button>
+
     </body>
 </html>
