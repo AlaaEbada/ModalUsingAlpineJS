@@ -15,10 +15,14 @@
         </div>
     </div>
 
+
     <div class="flex justify-center" wire:offline.remove>
         <input placeholder="Search... " type="text" wire:model.live.debounce.500ms="search"
             class="block\ w-50 mt-1 px-4 py-2 text-gray-700 bg-white border rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:outline-none">
     </div>
+
+    <h1 class="text-center my-5">All Users</h1>
+
     <ul class="mt-4 space-y-2" wire:offline.remove>
         @foreach ($this->users as $user)
             <li class="px-4 py-2 bg-white border rounded-lg shadow-sm flex justify-between items-center">
@@ -46,7 +50,7 @@
         {{ $this->users->links() }}
     </div>
 
-    <x-modal title="Modal 3" name="user-details">
+    <x-modal title="Users Details" name="user-details">
         @slot('body')
             @if ($selectedUser)
                 <div>
